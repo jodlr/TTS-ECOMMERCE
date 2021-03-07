@@ -1,0 +1,23 @@
+<div class="large-product-card" th:fragment="product">
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <img th:alt="${product.name}" th:src="@{${product.image}}" class="card-img" style="max-height: 100%; object-fit: cover;" />
+       </div>
+	    <div class="col-md-4">
+	        <div class="card-body">
+	            <div class="card-title">
+	                <h4 th:text="${product.name}" style="margin-bottom: 0;"></h4>
+	                <small th:text="${product.getBrand()}"></small>
+	            </div>
+	            <h5 class="card-text" th:text="${#numbers.formatCurrency(product.price)}"></h5>
+	            <p class="card-text" th:text="${product.description}"></p>
+	            
+	            <form th:action="@{/cart}" th:object="${product}" method="post">
+	                <!-- THIS WAY DOESN'T WORK FOR SOME REASON <input id="id" type="hidden" th:field="*{id}" />   -->
+	                <input type="hidden" th:value="${product.id}" th:attr="name='id'"/> 
+	                <button type="submit" class="btn btn-primary">Add to Cart</button>
+	            </form>
+	        </div>
+    	</div>
+	</div>
+</div>

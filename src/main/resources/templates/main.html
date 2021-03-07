@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Tech Talent Store</h1>
+            <p>This is a small ecommerce application that allows the user to purchase some of a few products that are offered here. </p>
+            <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+		<div class="row" th:each="product: ${products}">
+			<div th:insert="fragments/product :: product"></div>
+		</div>
+    </div>
+
+    <hr>
+</main>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
+
